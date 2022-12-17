@@ -1,0 +1,35 @@
+# Question 1
+
+def multlists(list1, list2):
+    '''Multiply two lists by creating a list of pairs.
+    Loop over both lists and append each pair to result.
+    '''
+    result = []
+    for x in list1:
+        for y in list2:
+            result.append((x, y))
+    return result
+'''
+list1 = ["Apple", "Orange", "Grapes"]
+list2 = ["Banana", "Kiwi", "Mandarin"]
+
+x = multlists(list1, list2)
+# or (using list comprehensions)
+print(x)
+'''
+
+def multlists2(list1, list2):
+    '''Multiply two lists by creating a list of pairs.
+
+    Use list comprehension.
+    '''
+    return [(x, y) for x in list1 for y in list2]
+
+'''
+list1 = ["Apple", "Orange", "Grapes"]
+list2 = ["Banana", "Kiwi", "Mandarin"]
+
+x = multlists2(list1, list2)
+# or (using list comprehensions)
+print(x)
+'''
