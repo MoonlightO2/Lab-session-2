@@ -1,0 +1,15 @@
+# Question 9
+
+def makedict(list1, list2):
+    '''Zip two lists into a dictionary'''
+    if (len(list1) == len(set(list1))):
+        return dict(zip(list1, list2))
+    else:
+        return None
+"""
+list1 = ["Apple", "Orange", "Grapes"]
+list2 = ["Banana", "Kiwi", "Mandarin"]
+
+listprint = makedict(list1, list2)
+print(listprint)
+"""
