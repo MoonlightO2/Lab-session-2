@@ -1,0 +1,13 @@
+# Question 2
+"""
+# To get lists of multiples, use list comprehensions:
+m6 = [x for x in range(0,100,6)]
+m7 = [x for x in range(0,100,7)]
+m9 = [x for x in range(0,100,9)]
+# For those divisible by 6 and 7, convert to sets and use intersection
+x = set(m6) & set(m7)
+print(x)
+# For those divisible by 7 or 9, convert to sets and use union
+y = set(m7) | set(m9)
+print(y)
+"""
