@@ -1,0 +1,27 @@
+# Question 6
+
+def version(listofstrings):
+    '''Tag strings in list with version number.
+
+    Create empty dictionary and empty list. Loop over list,
+    keeping track in dictionary of how many times each string
+    has occurred. Add appropriate string to new list.'''
+    strcounts = dict()
+    newlist = []
+    for s in listofstrings:
+        if s not in strcounts:
+            strcounts[s] = 0
+            suffix = ''
+        else:
+            strcounts[s] += 1
+            suffix = '_' + str(strcounts[s])
+        newlist.append(s + suffix)
+    return newlist
+
+
+"""
+with open('trees.txt','r') as file1:
+    for file2 in file1:
+        file3 = version(file2)
+        print(file3)
+"""
