@@ -1,0 +1,17 @@
+# Question 10
+
+def powergen(k):
+    result = 1
+    while True:
+        yield result
+        result *= k
+
+
+"""print(powergen(10))"""
+
+"""
+#k = int(input("Enter no to powergen: "))
+k = 5
+a = powergen(k)
+print("Powergen: ", a)
+"""
