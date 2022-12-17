@@ -1,0 +1,40 @@
+# Question 5
+
+
+def strcount(listofstrings):
+    '''Count how many times each string occurs in a list.
+
+    Create empty dictionary, then loop over list. For each element
+    check if it is already a key in dictionary; if not, create it, if
+    so increment it.
+    '''
+    strcounts = dict()
+    for s in listofstrings:
+        if s not in strcounts:
+            strcounts[s] = 1
+        else:
+            strcounts[s] += 1
+    return strcounts
+
+"""
+with open('trees.txt','r') as file1:
+    for file2 in file1:
+        file3 = strcount(file2)
+        print(file3)
+"""
+
+# A shorter version using a dictionary comprehension.
+
+def strcount2(listofstrings):
+    '''Count how many times each string occurs in a list.
+
+    Dictionary comprehension using count() method of lists.
+    '''
+    return {s: listofstrings.count(s) for s in listofstrings}
+
+"""
+with open('trees.txt','r') as file1:
+    for file2 in file1:
+        file3 = strcount2(file2)
+        print(file3)
+"""
