@@ -1,0 +1,82 @@
+# Question 13
+
+# Strings right justified in correct number of spaces.
+
+
+def printstrings2(strlist):
+    maxlen = max(map(len, strlist))
+    formatstr = '{}. {:>' + str(maxlen) + 's}'
+    for i, s in enumerate(strlist, start=1):
+        print(formatstr.format(i, s))
+
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+print("\nprintstrings2")
+printstrings2(strlist1)
+"""
+
+# or (using replacement field to substitute value of maxlen)
+
+def printstrings2b(strlist):
+    maxlen = max(map(len, strlist))
+    for i, s in enumerate(strlist, start=1):
+        print('{0}. {1:>{2}s}'.format(i, s, maxlen))
+
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+print("\nprintstrings2b")
+printstrings2b(strlist1)
+"""
+
+# Strings and numbers right justified in correct number of spaces.
+
+def printstrings3(strlist):
+    maxlen = max(map(len, strlist))
+    maxno = len(strlist) + 1
+    longest = len(str(maxno))
+    formatstr = '{:' + str(longest) + 'd}. {:>' + str(maxlen) + 's}'
+    for i, s in enumerate(strlist, start=1):
+        print(formatstr.format(i, s))
+
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+print("\nprintstrings3")
+printstrings3(strlist1)
+"""
+
+# or (using replacement fields to substitute values longest and maxlen)
+
+def printstrings3b(strlist):
+    maxlen = max(map(len, strlist))
+    maxno = len(strlist) + 1
+    longest = len(str(maxno))
+    for i, s in enumerate(strlist, start=1):
+        print('{0:{2}d}. {1:>{3}s}'.format(i, s, longest, maxlen))
+
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+print("printstrings3b")
+printstrings3b(strlist1)
+"""
+
+# Another way, using format() to create the format string. To get
+# literal curly braces inside the string, they need to be repeated, {{
+# or }}.
+
+def printstrings4(strlist):
+    maxlen = max(map(len, strlist))
+    maxno = len(strlist) + 1
+    longest = len(str(maxno))
+    formatstr = '{{:{}d}}. {{:>{}s}}'.format(longest, maxlen)
+    for i, s in enumerate(strlist, start=1):
+        print(formatstr.format(i, s))
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+print("printstrings4")
+printstrings4(strlist1)
+"""
