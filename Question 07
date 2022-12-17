@@ -1,0 +1,191 @@
+# Question 7
+
+# First a straightforward way.
+
+def roman(n):
+    '''Convert integer to roman numerals.'''
+    listnum = []
+    thousands = n // 1000
+    if (thousands > 0):
+        listnum.append('M' * thousands)
+        n %= 1000
+    if (n >= 900):
+        listnum.append('CM')
+        n -= 900
+    if (n >= 500):
+        listnum.append('D')
+        n -= 500
+    if (n >= 400):
+        listnum.append('CD')
+        n -= 400
+    hundreds = n // 100
+    if (hundreds > 0):
+        listnum.append('C' * hundreds)
+        n %= 100
+    if (n >= 90):
+        listnum.append('XC')
+        n -= 90
+    if (n >= 50):
+        listnum.append('L')
+        n -= 50
+    if (n >= 40):
+        listnum.append('XL')
+        n -= 40
+    tens = n // 10
+    if (tens > 0):
+        listnum.append('X' * tens)
+        n %= 10
+    if (n >= 9):
+        listnum.append('IX')
+        n -= 9
+    if (n >= 5):
+        listnum.append('V')
+        n -= 5
+    if (n >= 4):
+        listnum.append('IV')
+        n -= 40
+    ones = n
+    if (ones > 0):
+        listnum.append('I' * ones)
+    return ''.join(listnum)
+
+
+'''
+while True:
+    m = input('Convert Integers to Roman numbers.. Ready? (Y / N): ').lower()
+    if m == 'y':
+        intnum = int(input('Enter your number: '))
+        romnum = roman(intnum)
+        print(romnum)
+        print(romnum.lower())
+    elif m == 'n':
+        print("Not ready! Exit")
+        break
+    else:
+        print("Wrong input! Exit")
+        break
+'''
+
+
+# But there is a logic to this, which we can use to shorten the
+# function if we gather all the "data" into a list of 2-tuples:
+
+def roman2(n):
+    '''Convert integer to roman numerals.'''
+    letters = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+               (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+               (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+    listnum = []
+    for x in letters:
+        while (n >= x[0]):
+            listnum.append(x[1])
+            n -= x[0]
+    return ''.join(listnum)
+
+'''
+while True:
+    m = input('Convert Integers to Roman numbers.. Ready? (Y / N): ').lower()
+    if m == 'y':
+        intnum = int(input('Enter your number: '))
+        romnum = roman2(intnum)
+        print(romnum)
+        print(romnum.lower())
+    elif m == 'n':
+        print("Not ready! Exit")
+        break
+    else:
+        print("Wrong input! Exit")
+        break
+'''
+
+# A slight variant. Calculate how many of each string need to be added
+# to the end of the list, rather than using a while loop. This is
+# probably the best version.
+
+def roman3(n):
+    '''Convert integer to roman numerals.'''
+    letters = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+               (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+               (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+    listnum = []
+    for x in letters:
+        listnum.append(x[1] * (n // x[0]))
+        n %= x[0]
+    return ''.join(listnum)
+
+'''
+while True:
+    m = input('Convert Integers to Roman numbers.. Ready? (Y / N): ').lower()
+    if m == 'y':
+        intnum = int(input('Enter your number: '))
+        romnum = roman3(intnum)
+        print(romnum)
+        print(romnum.lower())
+    elif m == 'n':
+        print("Not ready! Exit")
+        break
+    else:
+        print("Wrong input! Exit")
+        break
+'''
+
+# We could use a dictionary instead, but because dictionaries are not
+# ordered it is essential to get a sorted list of keys and then
+# reverse it to ensure we process the numbers in the correct order.
+
+def roman4(n):
+    '''Convert integer to roman numerals.'''
+    letters = {1000: 'M', 900: 'CM', 500: 'D', 400: 'CD',
+               100: 'C', 90: 'XC', 50: 'L', 40: 'XL',
+               10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
+    listnum = []
+    for x in reversed(sorted(letters.keys())):
+        while (n >= x):
+            listnum.append(letters[x])
+            n -= x
+    return ''.join(listnum)
+
+'''
+while True:
+    m = input('Convert Integers to Roman numbers.. Ready? (Y / N): ').lower()
+    if m == 'y':
+        intnum = int(input('Enter your number: '))
+        romnum = roman4(intnum)
+        print(romnum)
+        print(romnum.lower())
+    elif m == 'n':
+        print("Not ready! Exit")
+        break
+    else:
+        print("Wrong input! Exit")
+        break
+'''
+
+# Again a slight variant like the one above.
+
+def roman5(n):
+    '''Convert integer to roman numerals.'''
+    letters = {1000: 'M', 900: 'CM', 500: 'D', 400: 'CD',
+               100: 'C', 90: 'XC', 50: 'L', 40: 'XL',
+               10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
+    listnum = []
+    for x in reversed(sorted(letters.keys())):
+        listnum.append(letters[x] * (n // x))
+        n %= x
+    return ''.join(listnum)
+
+'''
+while True:
+    m = input('Convert Integers to Roman numbers.. Ready? (Y / N): ').lower()
+    if m == 'y':
+        intnum = int(input('Enter your number: '))
+        romnum = roman4(intnum)
+        print(romnum)
+        print(romnum.lower())
+    elif m == 'n':
+        print("Not ready! Exit")
+        break
+    else:
+        print("Wrong input! Exit")
+        break
+'''
