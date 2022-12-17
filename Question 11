@@ -1,0 +1,40 @@
+# Question 11
+
+
+def powers23(n):
+    """Print n powers of 2 or 3 in order"""
+    powers2 = iter(powergen(2))
+    powers3 = iter(powergen(3))
+    p2 = next(powers2)
+    p3 = next(powers3)
+    p3 = next(powers3)
+    for i in range(n):
+        if p2 < p3:
+            print(p2, end=' ')
+            p2 = next(powers2)
+        else:
+            print(p3, end=' ')
+            p3 = next(powers3)
+
+
+"""powers23(10)"""
+
+
+def powers(numlist, n):
+    """Print n powers of numbers in numlist, in order"""
+    lenlist = len(numlist)
+    iterlist = [iter(powergen(i)) for i in numlist]
+    powerlist = list(map(next, iterlist))
+    for i in range(n):
+        minpower = min(powerlist)
+        print(minpower, end=' ')
+        for j in range(lenlist):
+            if powerlist[j] == minpower:
+                powerlist[j] = next(iterlist[j])
+
+"""
+numlist1 = [2, 3]
+n1 = 5
+print("Powers: ")
+powers(numlist1, n1)
+"""
