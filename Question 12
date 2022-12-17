@@ -1,0 +1,24 @@
+# Question 12
+
+# Basic version
+
+
+def printstrings0(strlist):
+    for i, s in enumerate(strlist, start=1):
+        print('{}. {}'.format(i, s))
+
+"""
+strlist1 = ["Shashini", "Aruna", "Dihein"]
+printstrings0(strlist1)
+"""
+
+# Strings right justified in 10 spaces.
+
+def printstrings1(strlist):
+    for i, s in enumerate(strlist, start=1):
+        print('{}. {:>10s}'.format(i, s))
+
+"""
+strlist2 = ["Shashini", "Aruna", "Dihein"]
+printstrings1(strlist2)
+"""
